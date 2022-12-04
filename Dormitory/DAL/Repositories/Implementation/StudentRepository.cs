@@ -1,7 +1,9 @@
 ﻿using DormitoryApi.DAL.Context;
 using DormitoryApi.DAL.Models;
 using DormitoryApi.DAL.Repositories.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 
 namespace DormitoryApi.DAL.Repositories.Implementation;
 
@@ -26,7 +28,7 @@ public class StudentRepository : IStudentRepository
     {
         var entity = await GetAsync(studentId);
         var result = _context.Students.Remove(entity);
-            _ = await _context.SaveChangesAsync();
+        _ = await _context.SaveChangesAsync();
         //returns result with the output value that is returned
         return result.Entity;
     }
@@ -52,12 +54,11 @@ public class StudentRepository : IStudentRepository
         return result.Entity;
     }
 
-    public async Task<bool>ExistAsync(string name, string surname)
+    public async Task<bool> ExistAsync(string name, string surname)
     {
-        var result = await _context.Students.AnyAsync(s=>s.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
-        && s.Surname.Equals(surname, StringComparison.OrdinalIgnoreCase));
+        var result = await _context.Students.AnyAsync(s => s.Name == name
+        && s.Surname == surname);
         return result;
     }
-
- 
+    
 }
