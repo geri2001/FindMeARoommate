@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Dormitory.Models
+namespace DormitoryApi.DAL.Models
 {
     public partial class Room
     {

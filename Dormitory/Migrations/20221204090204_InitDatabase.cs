@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Dormitory.Migrations
+namespace DormitoryApi.Migrations
 {
     public partial class InitDatabase : Migration
     {

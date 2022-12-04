@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dormitory", "Dormitory.csproj", "{250D6040-1EF0-4E76-AD98-B8DA7BCC28D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DormitoryApi", "DormitoryApi.csproj", "{250D6040-1EF0-4E76-AD98-B8DA7BCC28D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Dormitory.Controllers
+namespace DormitoryApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
