@@ -1,4 +1,4 @@
-namespace Dormitory
+namespace DormitoryApi
 {
     public class WeatherForecast
     {
