@@ -11,6 +11,7 @@ public class StudentRepository : IStudentRepository
     public StudentRepository(DormitoryContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
+        //if there was no dependency injection on program.cs
     }
 
     public async Task<Student> AddAsync(Student student)
@@ -26,11 +27,13 @@ public class StudentRepository : IStudentRepository
         var entity = await GetAsync(studentId);
         var result = _context.Students.Remove(entity);
             _ = await _context.SaveChangesAsync();
+        //returns result with the output value that is returned
         return result.Entity;
     }
 
     public async Task<Student> GetAsync(int studentId)
     {
+        //takes entity students then remove
         var result = await _context.Students.FirstOrDefaultAsync(s => s.Id == studentId);
         return result;
     }
@@ -45,6 +48,16 @@ public class StudentRepository : IStudentRepository
     {
         var result = _context.Students.Update(student);
         _ = await _context.SaveChangesAsync();
+        //returns result of student updated with new data
         return result.Entity;
     }
+
+    public async Task<bool>ExistAsync(string name, string surname)
+    {
+        var result = await _context.Students.AnyAsync(s=>s.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+        && s.Surname.Equals(surname, StringComparison.OrdinalIgnoreCase));
+        return result;
+    }
+
+ 
 }
