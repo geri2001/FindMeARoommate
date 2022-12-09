@@ -1,11 +1,13 @@
 ﻿using DormitoryApi.BLL.Services.Interface;
 using DormitoryApi.DAL.Models;
-using DormitoryApi.DAL.Context;
-using DormitoryApi.DAL.Repositories.Implementation;
 using DormitoryApi.DAL.Repositories.Interfaces;
-​
+using Dormitories.BLL;
+using DormitoryApi.BLL.Services.Interface;
+using DormitoryApi.DAL.Models;
+using DormitoryApi.DAL.Repositories.Interfaces;
+
 namespace DormitoryApi.BLL.Services.Implementation;
-​
+
 public class AnnouncementService : IAnnouncementService
 {
     private readonly IAnnouncementRepository _announcementRepository;
@@ -19,7 +21,6 @@ public class AnnouncementService : IAnnouncementService
         {
             throw new InvalidOperationException("Title or Description field cannot be empty");
         }
-​
         Announcement announcement = new Announcement
         {
             Title = title,
@@ -35,12 +36,12 @@ public class AnnouncementService : IAnnouncementService
         var result = await _announcementRepository.GetAsync();
         return result;
     }
-    public async Task Disable(int id)
-    {
-        if (!_announcementRepository.Exists(id))
-        {
-            throw new InvalidOperationException("Invalid Id");
-        }
-        await _announcementRepository.Disable(id);
-    }
+    //public async Task Disable(int id)
+    //{
+    //    if (!_announcementRepository.Exists(id))
+    //    {
+    //        throw new InvalidOperationException("Invalid Id");
+    //    }
+    //    await _announcementRepository.Disable(id);
+    //}
 }

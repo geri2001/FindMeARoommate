@@ -6,5 +6,5 @@ public interface IAnnouncementService
 {
     Task<Announcement> AddAsync(string title, string description);
     Task<List<Announcement>> GetAll();
-    Task Disable(int id);
+   // Task Disable(int id);
 }

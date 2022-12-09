@@ -6,7 +6,6 @@ namespace DormitoryApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-
 public class StudentController : ControllerBase
 {
     private readonly IStudentService _studentService;
@@ -17,19 +16,24 @@ public class StudentController : ControllerBase
     }
     [HttpPost("create")]
 
-    public async Task<IActionResult> Create(string name,string surname)
+    public async Task<IActionResult> Create(string name, string surname)
     {
         if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(surname))
         {
             return BadRequest("Please provide all information for student");
         }
+
         var createdStudent = await _studentService.AddAsync(name, surname);
+
         return Ok(createdStudent);
+
     }
     [HttpGet("Read")]
     public async Task<IActionResult> Get()
     {
         var result = await _studentService.GetAllAsync();
         return Ok(result);
+
+
     }
 }

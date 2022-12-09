@@ -3,37 +3,36 @@ using DormitoryApi.DAL.Models;
 using DormitoryApi.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 
-namespace Dormitories.BLL.Services.Implementation
+namespace DormitoryApi.BLL.Services.Implementation;
+
+public class StudentService : IStudentService
 {
-    public class StudentService : IStudentService
+
+
+    private readonly IStudentRepository _studentRepository;
+
+    public StudentService(IStudentRepository studentRepository)
     {
-        private readonly IStudentRepository _studentRepository;
-        public StudentService(IStudentRepository studentRepository)
-        {
-            _studentRepository = studentRepository ?? throw new ArgumentNullException(nameof(studentRepository));
-        }
+        _studentRepository = studentRepository ?? throw new ArgumentNullException(nameof(studentRepository));
+    }
 
-        public async Task<Student> AddAsync(string name, string surname)
+    public async Task<Student> AddAsync(string name, string surname)
+    {
+        if (await _studentRepository.ExistAsync(name, surname))
         {
-            //get info from user, name and surname
-            if (await _studentRepository.ExistAsync(name, surname))
-            {
-                throw new Exception("This user aleady exists!");
-            }
-            //save user in database
-            var student = new Student
-            {
-                Name = name,
-                Surname = surname
-            };
-            var result = await _studentRepository.AddAsync(student);
-            return result;
+            throw new Exception("This user aleady exists");
         }
-
-        public async Task<List<Student>> GetAllAsync()
+        var student = new Student
         {
-            var result = await _studentRepository.GetAsync();
-            return result;
-        }
+            Name = name,
+            Surname = surname
+        };
+        var result = await _studentRepository.AddAsync(student);
+        return result;
+    }
+    public async Task<List<Student>> GetAllAsync()
+    {
+        var result = await _studentRepository.GetAsync();
+        return result;
     }
 }
