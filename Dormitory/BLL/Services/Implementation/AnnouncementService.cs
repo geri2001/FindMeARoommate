@@ -1,7 +1,7 @@
 ﻿using DormitoryApi.BLL.Services.Interface;
 using DormitoryApi.DAL.Models;
 using DormitoryApi.DAL.Repositories.Interfaces;
-using Dormitories.BLL;
+using DormitoryApi.BLL;
 using DormitoryApi.BLL.Services.Interface;
 using DormitoryApi.DAL.Models;
 using DormitoryApi.DAL.Repositories.Interfaces;

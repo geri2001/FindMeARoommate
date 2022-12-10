@@ -1,4 +1,4 @@
-using Dormitories.BLL.Services.Implementation;
+using DormitoryApi.BLL.Services.Implementation;
 using DormitoryApi.BLL.Services.Interface;
 using DormitoryApi.DAL.Context;
 using DormitoryApi.DAL.Models;

@@ -1,10 +1,11 @@
 ﻿using DormitoryApi.DAL.Models;
-​
-namespace DormitoryApi.BLL.Services.Interface;
-​
-public interface IAnnouncementService
+
+namespace DormitoryApi.BLL.Services.Interface
 {
-    Task<Announcement> AddAsync(string title, string description);
-    Task<List<Announcement>> GetAll();
-   // Task Disable(int id);
+    public interface IAnnouncementService
+    {
+        Task<Announcement> AddAsync(string title, string description);
+        Task<List<Announcement>> GetAll();
+        // Task Disable(int id);
+    }
 }
