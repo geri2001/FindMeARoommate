@@ -32,6 +32,15 @@ public class ApplicationController : ControllerBase
     [HttpPost("Create")]
     public async Task<IActionResult> Create(int AnnouncementID, int StudentID)
     {
+        if (AnnouncementID == 0)
+        {
+            return BadRequest("Announcement ID is required!");
+        }
+        if (StudentID == 0)
+        {
+            return BadRequest("Student ID is required!");
+        }
+
 
         var createdApplication = await _applicationService.AddAsync(AnnouncementID, StudentID);
 

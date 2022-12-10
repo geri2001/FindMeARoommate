@@ -27,13 +27,9 @@ namespace Dormitories.DAL.Repositories.Implementation
 
         public async Task<bool> ExistAsync(int AnnouncementID, int StudentID)
         {
-            var result = await _context.Students.AnyAsync(s => s.Id == StudentID);
-            var result1 = await _context.Announcements.AnyAsync(s => s.Id == AnnouncementID);
-            if (result == true && result1 == true)
-            {
-                return true;
-            }
-            else return false;
+            var result = await _context.Applications.AnyAsync(s => s.StudentId == StudentID && s.AnnouncementId == AnnouncementID);
+
+            return result;
         }
     }
 }

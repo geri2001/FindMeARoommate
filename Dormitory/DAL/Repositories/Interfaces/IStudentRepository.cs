@@ -11,5 +11,6 @@ namespace DormitoryApi.DAL.Repositories.Interfaces
         Task<Student> GetAsync(int studentId);
         Task<List<Student>> GetAsync();
         Task<bool> ExistAsync(string name, string surname);
+        Task<bool> Exists(int studentID);
     }
 }

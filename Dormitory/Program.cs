@@ -1,3 +1,4 @@
+using Dormitories.DAL.Repositories.Implementation;
 using DormitoryApi.BLL.Services.Implementation;
 using DormitoryApi.BLL.Services.Interface;
 using DormitoryApi.DAL.Context;
@@ -27,6 +28,10 @@ namespace DormitoryApi
 
             builder.Services.AddScoped<IStudentRepository, StudentRepository>();
             builder.Services.AddScoped<IStudentService, StudentService>();
+            builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+            builder.Services.AddScoped<IApplicationService, ApplicationService>();
+            builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
+            builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
 
             var app = builder.Build();
 

@@ -11,6 +11,7 @@ namespace DormitoryApi.BLL.Services.Implementation;
 public class AnnouncementService : IAnnouncementService
 {
     private readonly IAnnouncementRepository _announcementRepository;
+
     public AnnouncementService(IAnnouncementRepository announcementRepository)
     {
         _announcementRepository = announcementRepository ?? throw new ArgumentNullException(nameof(announcementRepository));
